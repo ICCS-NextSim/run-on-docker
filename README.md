@@ -9,6 +9,7 @@ How to run nextsim using docker
 
 default_expt.taz is a .tar file
 
+
 # How to create the image and compile nextsim using docker:
 
 Build image with nextsim
@@ -21,6 +22,14 @@ docker build . -t nextsim --build-arg BASE_IMAGE=nansencenter/nextsim_base:0.5
 docker run --rm -it nextsim bash
 which nextsim.exec
 
+
+You can use the input files in folder "data_noatm" to run your expt. 
+Copy or move data_noatm to your home directory as "data" and delete/move somewhere else for double checking later 
+
+mv data_noatm $HOME/data
+rm data_noatm/outputs/*
+
+
 # nextsim searches for mesh in $NEXTSIM_MESH_DIR, (/mesh by default)
 # meshes, config files and output files are in the same dir on the host
 # run container and mount $HOME/data as two dirs:
@@ -30,7 +39,6 @@ docker run --rm -it -v $HOME/data:/mesh -v $HOME/data:/data nextsim bash
 mpirun --allow-run-as-root -np 4 --mca btl_vader_single_copy_mechanism none --mca btl ^openib --mca pml ob1 nextsim.exec --config-files=/data/coast_10km.cfg
 
 # Ps: you can change "coast_10km.cfg" to your own config file 
-
 
 
 # Extra info

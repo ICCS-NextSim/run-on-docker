@@ -29,20 +29,17 @@ docker build . -t nextsim --build-arg BASE_IMAGE=nansencenter/nextsim_base:0.5
 docker run --rm -it nextsim bash
 which nextsim.exec
 ```
+### run the model inside container with nextsim:
 
-### nextsim searches for mesh in $NEXTSIM_MESH_DIR, (/mesh by default)
-### meshes, config files and output files are in the same dir on the host
-### run container and mount $HOME/data as two dirs:
+Create an interactive Docker session
 ```bash
-docker run --rm -it -v $HOME/data:/mesh -v $HOME/data:/data nextsim bash
+docker run --rm -it -v <MyMeshDir>/data:/mesh -v <MyDataDir>:/data nextsim bash
 ```
-### Running the model inside container with nextsim:
+with <MyMeshDir> the directory on your system containing the *.msh and *.mpp files and <MyDataDir> the directory containing other input files.
+
 ```bash
 mpirun --allow-run-as-root -np 4 --mca btl_vader_single_copy_mechanism none --mca btl ^openib --mca pml ob1 nextsim.exec --config-files=/data/nextsim.cfg
-```
-
-### Ps: you can change "coast_10km.cfg" to your own config file 
-
+``'
 
 ## Extra info
 

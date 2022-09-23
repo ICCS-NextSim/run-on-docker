@@ -3,9 +3,38 @@
 # run-on-docker
 How to run nextsim using docker
 
+# Download image and default experiment using the link below:
+
 [Link to docker image and default experiment](https://drive.google.com/drive/folders/1GDiE31En20KHdHGIUPrfFIcAgjgIdtyL?usp=sharing)
 
+# How to create the image and compile nextsim using docker:
+
+Build image with nextsim
+cd nextsim
+# build an image and compile the model code
+docker build . -t nextsim
+# build using a custom base image (e.g. for Mac)
+docker build . -t nextsim --build-arg BASE_IMAGE=nansencenter/nextsim_base:0.5
+# inspect inside container
+docker run --rm -it nextsim bash
+which nextsim.exec
+
+# nextsim searches for mesh in $NEXTSIM_MESH_DIR, (/mesh by default)
+# meshes, config files and output files are in the same dir on the host
+# run container and mount $HOME/data as two dirs:
+docker run --rm -it -v $HOME/data:/mesh -v $HOME/data:/data nextsim bash
+
+# Running the model inside container with nextsim:
+mpirun --allow-run-as-root -np 4 --mca btl_vader_single_copy_mechanism none --mca btl ^openib --mca pml ob1 nextsim.exec --config-files=/data/coast_10km.cfg
+
+# Ps: you can change "coast_10km.cfg" to your own config file 
+
+
+
+# Extra info
+
 [Youtube link to run nextsim on docker](https://www.youtube.com/watch?v=CaiM0iR5rz8&list=PLvzG0ke9xnX5-PMCqienQbSyoSP4qtCXD&index=1)
+
 
 ["How to"] from Guillaume
 

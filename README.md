@@ -35,11 +35,11 @@ Create an interactive Docker session
 ```bash
 docker run --rm -it -v <MyMeshDir>/data:/mesh -v <MyDataDir>:/data nextsim bash
 ```
-with <MyMeshDir> the directory on your system containing the *.msh and *.mpp files and <MyDataDir> the directory containing other input files.
+with ```<MyMeshDir>``` the directory on your system containing the *.msh and *.mpp files and ```<MyDataDir>``` the directory containing other input files.
 
 ```bash
 mpirun --allow-run-as-root -np 4 --mca btl_vader_single_copy_mechanism none --mca btl ^openib --mca pml ob1 nextsim.exec --config-files=/data/nextsim.cfg
-``'
+```
 
 ## Extra info
 

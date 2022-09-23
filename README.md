@@ -4,8 +4,12 @@
 
 [Link to docker image and default experiment](https://drive.google.com/drive/folders/1GDiE31En20KHdHGIUPrfFIcAgjgIdtyL?usp=sharing)
 
-default_expt.taz is a .tar file
-
+After extracting default_expt.tar you can use the input files in folder "data_noatm" to run your expt. 
+Copy or move data_noatm to your home directory as "data" and delete/move somewhere else for double checking later 
+```bash
+mv data_noatm $HOME/data
+rm data_noatm/outputs/*
+```
 
 ### How to create the image and compile nextsim using docker:
 
@@ -25,13 +29,6 @@ docker build . -t nextsim --build-arg BASE_IMAGE=nansencenter/nextsim_base:0.5
 ```bash
 docker run --rm -it nextsim bash
 which nextsim.exec
-```
-
-You can use the input files in folder "data_noatm" to run your expt. 
-Copy or move data_noatm to your home directory as "data" and delete/move somewhere else for double checking later 
-```bash
-mv data_noatm $HOME/data
-rm data_noatm/outputs/*
 ```
 
 ### nextsim searches for mesh in $NEXTSIM_MESH_DIR, (/mesh by default)

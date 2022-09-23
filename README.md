@@ -1,7 +1,9 @@
+
+
 # run-on-docker
 How to run nextsim using docker
 
-
+[Link to docker image and default experiment](https://drive.google.com/drive/folders/1GDiE31En20KHdHGIUPrfFIcAgjgIdtyL?usp=sharing)
 
 [Youtube link to run nextsim on docker](https://www.youtube.com/watch?v=CaiM0iR5rz8&list=PLvzG0ke9xnX5-PMCqienQbSyoSP4qtCXD&index=1)
 

@@ -1,47 +1,54 @@
+# How to run nextsim using docker
 
-
-# run-on-docker
-How to run nextsim using docker
-
-# Download image and default experiment using the link below:
+### Download image and default experiment using the link below:
 
 [Link to docker image and default experiment](https://drive.google.com/drive/folders/1GDiE31En20KHdHGIUPrfFIcAgjgIdtyL?usp=sharing)
 
 default_expt.taz is a .tar file
 
 
-# How to create the image and compile nextsim using docker:
+### How to create the image and compile nextsim using docker:
 
 Build image with nextsim
+```bash
 cd nextsim
-# build an image and compile the model code
+```
+### build an image and compile the model code
+```bash
 docker build . -t nextsim
-# build using a custom base image (e.g. for Mac)
+```
+### build using a custom base image (e.g. for Mac)
+```bash
 docker build . -t nextsim --build-arg BASE_IMAGE=nansencenter/nextsim_base:0.5
-# inspect inside container
+```
+### inspect inside container
+```bash
 docker run --rm -it nextsim bash
 which nextsim.exec
-
+```
 
 You can use the input files in folder "data_noatm" to run your expt. 
 Copy or move data_noatm to your home directory as "data" and delete/move somewhere else for double checking later 
-
+```bash
 mv data_noatm $HOME/data
 rm data_noatm/outputs/*
+```
 
-
-# nextsim searches for mesh in $NEXTSIM_MESH_DIR, (/mesh by default)
-# meshes, config files and output files are in the same dir on the host
-# run container and mount $HOME/data as two dirs:
+### nextsim searches for mesh in $NEXTSIM_MESH_DIR, (/mesh by default)
+### meshes, config files and output files are in the same dir on the host
+### run container and mount $HOME/data as two dirs:
+```bash
 docker run --rm -it -v $HOME/data:/mesh -v $HOME/data:/data nextsim bash
-
-# Running the model inside container with nextsim:
+```
+### Running the model inside container with nextsim:
+```bash
 mpirun --allow-run-as-root -np 4 --mca btl_vader_single_copy_mechanism none --mca btl ^openib --mca pml ob1 nextsim.exec --config-files=/data/coast_10km.cfg
+```
 
-# Ps: you can change "coast_10km.cfg" to your own config file 
+### Ps: you can change "coast_10km.cfg" to your own config file 
 
 
-# Extra info
+## Extra info
 
 [Youtube link to run nextsim on docker](https://www.youtube.com/watch?v=CaiM0iR5rz8&list=PLvzG0ke9xnX5-PMCqienQbSyoSP4qtCXD&index=1)
 

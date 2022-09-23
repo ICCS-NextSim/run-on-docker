@@ -7,6 +7,8 @@ How to run nextsim using docker
 
 [Link to docker image and default experiment](https://drive.google.com/drive/folders/1GDiE31En20KHdHGIUPrfFIcAgjgIdtyL?usp=sharing)
 
+default_expt.taz is a .tar file
+
 # How to create the image and compile nextsim using docker:
 
 Build image with nextsim

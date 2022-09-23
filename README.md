@@ -5,10 +5,9 @@
 [Link to docker image and default experiment](https://drive.google.com/drive/folders/1GDiE31En20KHdHGIUPrfFIcAgjgIdtyL?usp=sharing)
 
 After extracting default_expt.tar you can use the input files in folder "data_noatm" to run your expt. 
-Copy or move data_noatm to your home directory as "data" and delete/move somewhere else for double checking later 
+Copy or move data_noatm to your home directory as "data"
 ```bash
 mv data_noatm $HOME/data
-rm data_noatm/outputs/*
 ```
 
 ### How to create the image and compile nextsim using docker:

@@ -38,7 +38,7 @@ docker run --rm -it -v $HOME/data:/mesh -v $HOME/data:/data nextsim bash
 ```
 ### Running the model inside container with nextsim:
 ```bash
-mpirun --allow-run-as-root -np 4 --mca btl_vader_single_copy_mechanism none --mca btl ^openib --mca pml ob1 nextsim.exec --config-files=/data/coast_10km.cfg
+mpirun --allow-run-as-root -np 4 --mca btl_vader_single_copy_mechanism none --mca btl ^openib --mca pml ob1 nextsim.exec --config-files=/data/nextsim.cfg
 ```
 
 ### Ps: you can change "coast_10km.cfg" to your own config file 
